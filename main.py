@@ -1,16 +1,45 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import random
+import time
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def display_intro():
+    print('''You are in a land full of dragons. In front of you, you see two caves. In one cave, the dragon is friendly
+    and will share his treasure with you. The other dragon is greedy and hungry, and will eat you on sight.''')
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def choose_cave():
+    cave = ''
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    while cave != '1' and cave != '2':
+        print('Which cave will you go into? (1 or 2)')
+        cave = input()
+
+    return cave
+
+
+def check_cave(playerChoice):
+    print('You approach the cave...')
+    print('It is large and spooky...')
+    print('A large dragon jumps out in front of you! He opens his jaws and...')
+    time.sleep(2)
+
+    if playerChoice == str(random.randint(1, 2)):
+        print("Gives you his treasure!")
+    else:
+        print("Gobbles you down in one bite!")
+
+
+playing = True
+
+while playing:
+    display_intro()
+    check_cave(choose_cave())
+
+    playAgain = ''
+
+    while playAgain != "yes" and playAgain != 'no':
+        print("Do you want to play again?")
+        playAgain = input()
+
+    if playAgain == 'no':
+        playing = False
